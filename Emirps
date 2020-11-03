@@ -1,0 +1,63 @@
+###Emirp 
+##Christian Abys
+#write a program that displays the first 100 emirps
+#display 10 numbers per line 
+#find the first 500 prime numbers
+#set upper and lower interval for finding primes
+lower = 0
+upper = 7000
+#define function to get prime numbers
+def prime_num(lower,upper):
+    prime_list = [] #prime list
+    #loop through each number 
+    for number in range(lower,upper+1):
+        #if number greater than 1
+        if number > 1: 
+            #for each number in 2 to number
+            for i in range(2,number):
+                #if number divided by other number than itself equals 0 
+                if number % i == 0:
+                    #number is not prime
+                    break
+            #else its a prime number
+            else:
+                prime_list.append(number) #append number to append
+                #print(prime)
+    return(prime_list)                          
+                    
+#function to reverse selected primes
+def reverse_prime(x):
+    rev_prime = 0 #initailize object as integer
+    while x > 0: #while number prime is greater than 0
+        rev_prime = (rev_prime * 10) + x % 10 #rev_prime is equal to rev_prime * 10 + remainder of the prime
+        x = int(x/10)
+    return rev_prime
+#function checks if reverse number is a prime
+def prime_check(x):
+    # iterate through number up to the prime number itself
+    for i in range (2, x):
+        #if all reaminders are zero than its a prime
+        if x % i  == 0:
+            #return as false
+            return False
+    #return as True
+    return True
+#get prime_list from function
+prime_list = prime_num(lower,upper)
+#get length of prime_list
+length = len(prime_list)
+#set prime_list2 
+prime_list2 = []
+#loop through prime number
+for p in range(length):
+    #reverse each prime number
+    rev = reverse_prime(prime_list[p])
+    #check if each number is an emirp non-palindromic
+    if prime_list[p] != rev and prime_check(rev) is True: # prime number should not equal its reverse
+        prime_list2.append(prime_list[p]) #append to new list
+        prime_list2 = prime_list2[:100]   #select the first 100 rows
+print("Here are the first 100 Emirps")
+for i in range(len(prime_list2)//10+1):   #for each of the first 10 values
+    print(*prime_list2[i*10:(i+1)*10], "\n") #print 10 values for each column add new line
+    
+
