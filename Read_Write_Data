@@ -1,0 +1,41 @@
+##Write/read data
+#Christian Abys 
+#import package randint and os.path
+from random import randint
+import os.path
+#define function
+def main():
+    #filepath; change this to change filepath for a different user
+    filepath = ("/Users/christianabys/Desktop/School/Boston_University/2020/PIS/")
+    #user input filename
+    filename = input("Enter filename to create and write to: ")
+    #add to create new file string
+    file = (filepath + filename)
+    #validate that file does not exist 
+    if os.path.isfile(file) == True:
+        #print to user that file already exists
+        print("File already exists")
+    #else statement if file does not exist
+    else:
+        #open file
+        outfile = open(file,"w")
+        #iterate 100 times to get 100 integers
+        for i in range(100):
+            #generate random int between 1 and 100, cast as a string, and write it to file, seperate by spaces
+            outfile.write(str(randint(1,100)) + " ")
+            #close file
+        outfile.close()
+        #open file for reading data
+        infile = open(file,"r")
+        #cast to variable
+        s = infile.read()
+        #convert to numbers and split into list
+        numbers = [eval(x) for x in s.split()]
+        #print each number
+        for number in numbers:
+            print(number, end = " ")
+        #close file
+        infile.close()
+                
+#call the function       
+main()
