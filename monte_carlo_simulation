@@ -1,0 +1,44 @@
+###Monte Carlo Simulation
+##Christian Abys
+
+
+
+#import packages
+import random
+#initialize # of darts thrown to million
+number_of_darts = 1000000
+#counter for darts hitting odd region
+odd_hits = 0
+#for loop that generates a random number inside a range of -1 to 1 and computes odd region hits
+for i in range(number_of_darts):
+    x = random.random() * 2 - 1 #generate number b/t -1 and 1, asign x 
+    y = random.random() * 2 - 1 #generate number b/t -1 and 1, asign y
+    if x < 0:                   #region 1 
+        odd_hits += 1           #hit counter
+    elif x > 0 and y >0 and x + y < 1:  #region 3
+        odd_hits += 1                   #hit counter
+#output A
+print('Monte Carlo Simulation: Part A')
+#output odd_hits total number and percentage
+print("1 Million Darts were thrown against a board with 4 regions - 2 odd")
+print("Total number of odd-region hits is: ",odd_hits)  
+print("Percentage of odd-region hits is:",format((odd_hits/number_of_darts),'.2f'))
+
+#initialize # of darts thrown to million
+num_of_darts = 1000000
+#counter for darts hitting odd region
+odd_hit = 0
+#for loop that generates a random number inside a range of -1 to 1 and computes odd region hits
+for i in range(num_of_darts):
+    x = random.random() * 2 - 1 #generate number b/t -1 and 1, asign x 
+    y = random.random() * 2 - 1 #generate number b/t -1 and 1, asign y
+    if x < 0 and y < 0:
+        odd_hit += 1
+    elif x > 0 and y > 0 and x + y < 1:
+        odd_hit += 1
+
+#output b
+#output odd_hits total number and percentage
+print("Monte Carlo Simulation: Part B")
+print("Total number of odd-region hits is: ",odd_hit)
+print("Percentage of odd-region hits is:",format((odd_hit/num_of_darts),'.2f'))
