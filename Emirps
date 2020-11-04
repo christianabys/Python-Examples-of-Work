@@ -55,9 +55,7 @@ for p in range(length):
     #check if each number is an emirp non-palindromic
     if prime_list[p] != rev and prime_check(rev) is True: # prime number should not equal its reverse
         prime_list2.append(prime_list[p]) #append to new list
-        prime_list2 = prime_list2[:100]   #select the first 100 rows
-print("Here are the first 100 Emirps")
+        prime_list2 = prime_list2[:100]   #select the first 100 emirps
 for i in range(len(prime_list2)//10+1):   #for each of the first 10 values
-    print(*prime_list2[i*10:(i+1)*10], "\n") #print 10 values for each column add new line
-    
-
+    x = prime_list2[i*10:(i+1)*10]  #x 10 values for each column add new line
+    print(''.join('{:10}'.format(i) for i in x))
